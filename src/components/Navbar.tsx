@@ -1,19 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "Journey", href: "#journey" },
-  { label: "Writing", href: "#writing" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "#about", type: "scroll" as const },
+  { label: "Expertise", href: "#expertise", type: "scroll" as const },
+  { label: "Journey", href: "#journey", type: "scroll" as const },
+  { label: "Blog", href: "/blog", type: "link" as const },
+  { label: "Contact", href: "#contact", type: "scroll" as const },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +29,15 @@ export function Navbar() {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      if (!isHome) {
+        window.location.href = "/" + href;
+        return;
+      }
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -44,24 +54,42 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 md:h-20">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="text-lg font-semibold tracking-tight font-[family-name:var(--font-space-grotesk)]"
           >
             TG<span className="text-accent">.</span>
-          </button>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollTo(item.href)}
-                className="text-xs text-muted hover:text-foreground transition-colors duration-300 font-[family-name:var(--font-inter)] tracking-wide uppercase"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.type === "link" ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`text-xs hover:text-foreground transition-colors duration-300 font-[family-name:var(--font-inter)] tracking-wide uppercase ${
+                    pathname.startsWith(item.href) ? "text-accent" : "text-muted"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.label}
+                  onClick={() => scrollTo(item.href)}
+                  className="text-xs text-muted hover:text-foreground transition-colors duration-300 font-[family-name:var(--font-inter)] tracking-wide uppercase"
+                >
+                  {item.label}
+                </button>
+              )
+            )}
           </div>
 
           {/* Mobile toggle */}
@@ -95,19 +123,39 @@ export function Navbar() {
             className="fixed inset-0 z-[99] bg-background/95 backdrop-blur-xl flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-8">
-              {navItems.map((item, i) => (
-                <motion.button
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: i * 0.1 }}
-                  onClick={() => scrollTo(item.href)}
-                  className="text-3xl font-semibold font-[family-name:var(--font-space-grotesk)]"
-                >
-                  {item.label}
-                </motion.button>
-              ))}
+              {navItems.map((item, i) =>
+                item.type === "link" ? (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`text-3xl font-semibold font-[family-name:var(--font-space-grotesk)] ${
+                        pathname.startsWith(item.href) ? "text-accent" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: i * 0.1 }}
+                    onClick={() => scrollTo(item.href)}
+                    className="text-3xl font-semibold font-[family-name:var(--font-space-grotesk)]"
+                  >
+                    {item.label}
+                  </motion.button>
+                )
+              )}
             </div>
           </motion.div>
         )}

@@ -3,6 +3,7 @@
 import { FadeInUp } from "./AnimatedText";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 const articles = [
   {
@@ -107,29 +108,52 @@ export function Writing() {
             </h2>
           </FadeInUp>
           <FadeInUp delay={0.2}>
-            <a
-              href="https://medium.com/@2017tejasgupta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-accent hover:text-accent/80 transition-colors font-[family-name:var(--font-inter)] flex items-center gap-2"
-            >
-              All articles on Medium
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                className="inline"
+            <div className="flex items-center gap-6">
+              <Link
+                href="/blog"
+                className="text-sm text-accent hover:text-accent/80 transition-colors font-[family-name:var(--font-inter)] flex items-center gap-2"
               >
-                <path
-                  d="M1 13L13 1M13 1H5M13 1V9"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+                Read Blog
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className="inline"
+                >
+                  <path
+                    d="M1 7H13M13 7L7 1M13 7L7 13"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <a
+                href="https://medium.com/@2017tejasgupta"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted hover:text-foreground transition-colors font-[family-name:var(--font-inter)] flex items-center gap-2"
+              >
+                Medium
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className="inline"
+                >
+                  <path
+                    d="M1 13L13 1M13 1H5M13 1V9"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
           </FadeInUp>
         </div>
 

@@ -1,0 +1,126 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="ogrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="oglow1" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="oglow2" x1="1200" y1="0" x2="0" y2="630">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="arrow-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogrid)"/>
+  <rect width="1200" height="630" fill="url(#oglow1)"/>
+  <rect width="1200" height="630" fill="url(#oglow2)"/>
+
+  <!-- Title -->
+  <text x="600" y="115" text-anchor="middle" fill="#F5F5F5" font-size="46" font-weight="800" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-1.5">Ditch the Public ALB</text>
+  <text x="600" y="168" text-anchor="middle" fill="#A1A1AA" font-size="24" font-weight="400" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-0.3">How CloudFront VPC Origins Changes AWS Security</text>
+
+  <!-- Tags -->
+  <rect x="425" y="195" width="55" height="26" rx="13" fill="#3B82F6" fill-opacity="0.15" stroke="#3B82F6" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="452" y="213" text-anchor="middle" fill="#60A5FA" font-size="12" font-weight="600" font-family="system-ui">AWS</text>
+
+  <rect x="490" y="195" width="98" height="26" rx="13" fill="#8B5CF6" fill-opacity="0.15" stroke="#8B5CF6" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="539" y="213" text-anchor="middle" fill="#A78BFA" font-size="12" font-weight="600" font-family="system-ui">CloudFront</text>
+
+  <rect x="598" y="195" width="80" height="26" rx="13" fill="#22C55E" fill-opacity="0.15" stroke="#22C55E" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="638" y="213" text-anchor="middle" fill="#4ADE80" font-size="12" font-weight="600" font-family="system-ui">Security</text>
+
+  <rect x="688" y="195" width="95" height="26" rx="13" fill="#F59E0B" fill-opacity="0.15" stroke="#F59E0B" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="735" y="213" text-anchor="middle" fill="#FCD34D" font-size="12" font-weight="600" font-family="system-ui">Architecture</text>
+
+  <!-- Divider -->
+  <line x1="200" y1="248" x2="1000" y2="248" stroke="#262626" stroke-width="1"/>
+
+  <!-- BEFORE architecture (left, faded/red) -->
+  <text x="350" y="290" text-anchor="middle" fill="#EF4444" font-size="13" font-weight="700" font-family="system-ui" letter-spacing="2" opacity="0.7">BEFORE</text>
+
+  <!-- CF box -->
+  <rect x="180" y="310" width="120" height="50" rx="8" fill="#1A1A1A" stroke="#525252" stroke-width="1"/>
+  <text x="240" y="335" text-anchor="middle" fill="#A1A1AA" font-size="13" font-weight="600" font-family="system-ui">CloudFront</text>
+  <text x="240" y="350" text-anchor="middle" fill="#525252" font-size="9" font-family="system-ui">Edge</text>
+
+  <!-- Arrow CF -> ALB (red dashed = insecure) -->
+  <line x1="300" y1="335" x2="370" y2="335" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+  <text x="335" y="325" text-anchor="middle" fill="#EF4444" font-size="8" font-family="system-ui" opacity="0.6">PUBLIC</text>
+
+  <!-- Public ALB box (red border) -->
+  <rect x="370" y="310" width="130" height="50" rx="8" fill="#1A1A1A" stroke="#EF4444" stroke-width="1.5" opacity="0.7"/>
+  <text x="435" y="335" text-anchor="middle" fill="#FCA5A5" font-size="13" font-weight="600" font-family="system-ui">Public ALB</text>
+  <text x="435" y="350" text-anchor="middle" fill="#EF4444" font-size="9" font-family="system-ui">Exposed IP</text>
+
+  <!-- X marks for vulnerabilities -->
+  <rect x="230" y="380" width="140" height="22" rx="6" fill="#EF4444" fill-opacity="0.1" stroke="#EF4444" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="300" y="395" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="500" font-family="system-ui">Bypassable</text>
+
+  <rect x="380" y="380" width="140" height="22" rx="6" fill="#EF4444" fill-opacity="0.1" stroke="#EF4444" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="450" y="395" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="500" font-family="system-ui">Header Workarounds</text>
+
+  <!-- Strikethrough on BEFORE -->
+  <line x1="170" y1="350" x2="520" y2="350" stroke="#EF4444" stroke-width="2" opacity="0.25"/>
+
+  <!-- AFTER architecture (right, green) -->
+  <text x="850" y="290" text-anchor="middle" fill="#22C55E" font-size="13" font-weight="700" font-family="system-ui" letter-spacing="2">AFTER</text>
+
+  <!-- CF box -->
+  <rect x="680" y="310" width="120" height="50" rx="8" fill="#1A1A1A" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="740" y="335" text-anchor="middle" fill="#C4B5FD" font-size="13" font-weight="600" font-family="system-ui">CloudFront</text>
+  <text x="740" y="350" text-anchor="middle" fill="#8B5CF6" font-size="9" font-family="system-ui">Edge</text>
+
+  <!-- Arrow CF -> ENI -> ALB (green solid = secure) -->
+  <line x1="800" y1="335" x2="870" y2="335" stroke="url(#arrow-grad)" stroke-width="2"/>
+
+  <!-- VPC box (dashed border) -->
+  <rect x="860" y="295" width="200" height="80" rx="10" fill="#22C55E" fill-opacity="0.03" stroke="#22C55E" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="6 3"/>
+  <text x="875" y="312" fill="#22C55E" font-size="9" font-weight="600" font-family="system-ui" opacity="0.5">PRIVATE SUBNET</text>
+
+  <!-- ENI small -->
+  <rect x="870" y="320" width="50" height="30" rx="6" fill="#1A1A1A" stroke="#22C55E" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="895" y="340" text-anchor="middle" fill="#4ADE80" font-size="9" font-weight="700" font-family="system-ui">ENI</text>
+
+  <!-- Arrow ENI -> ALB -->
+  <line x1="920" y1="335" x2="950" y2="335" stroke="#22C55E" stroke-width="1.5"/>
+
+  <!-- Private ALB box -->
+  <rect x="950" y="315" width="100" height="40" rx="8" fill="#1A1A1A" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="1000" y="335" text-anchor="middle" fill="#86EFAC" font-size="12" font-weight="700" font-family="system-ui">Private ALB</text>
+  <text x="1000" y="347" text-anchor="middle" fill="#22C55E" font-size="8" font-family="system-ui">No Public IP</text>
+
+  <!-- Green badges -->
+  <rect x="730" y="380" width="120" height="22" rx="6" fill="#22C55E" fill-opacity="0.1" stroke="#22C55E" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="790" y="395" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="500" font-family="system-ui">Private Network</text>
+
+  <rect x="860" y="380" width="120" height="22" rx="6" fill="#22C55E" fill-opacity="0.1" stroke="#22C55E" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="920" y="395" text-anchor="middle" fill="#22C55E" font-size="10" font-weight="500" font-family="system-ui">Zero Exposure</text>
+
+  <!-- VS divider -->
+  <line x1="600" y1="280" x2="600" y2="420" stroke="#262626" stroke-width="1"/>
+  <rect x="582" y="325" width="36" height="24" rx="12" fill="#1A1A1A" stroke="#404040" stroke-width="1"/>
+  <text x="600" y="342" text-anchor="middle" fill="#737373" font-size="11" font-weight="700" font-family="system-ui">VS</text>
+
+  <!-- Bottom section -->
+  <rect x="350" y="445" width="500" height="50" rx="25" fill="#22C55E" fill-opacity="0.08" stroke="#22C55E" stroke-width="1" stroke-opacity="0.2"/>
+  <text x="600" y="476" text-anchor="middle" fill="#4ADE80" font-size="16" font-weight="700" font-family="system-ui">10x Security Improvement</text>
+
+  <!-- Shield path icon -->
+  <path d="M590 500 L600 495 L610 500 L610 512 C610 516 605 520 600 522 C595 520 590 516 590 512 Z" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.5"/>
+  <path d="M596 508 L599 511 L605 505" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+
+  <!-- Author & domain -->
+  <text x="600" y="570" text-anchor="middle" fill="#525252" font-size="14" font-weight="500" font-family="system-ui">Tejas Gupta</text>
+  <text x="600" y="592" text-anchor="middle" fill="#404040" font-size="12" font-family="system-ui">guptatejas.com</text>
+
+  <!-- Border -->
+  <rect x="1" y="1" width="1198" height="628" rx="8" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+</svg>
