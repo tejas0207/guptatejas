@@ -2,6 +2,7 @@
 
 import { BlogHeader } from "@/components/blog/BlogHeader";
 import { ShareButtons } from "@/components/blog/ShareButtons";
+import { SupportSection } from "@/components/blog/SupportSection";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { getContentBySlug } from "@/content/blog/content-registry";
 import { useEffect, useState } from "react";
@@ -90,6 +91,7 @@ export function BlogPostClient({
       {tocItems.length > 0 && <TableOfContents items={tocItems} />}
       {Content ? <Content /> : <div className="text-center py-20 text-muted">Content not found</div>}
       <div className="max-w-3xl mx-auto px-6 pb-24">
+        <SupportSection />
         <ShareButtons
           title={title}
           url={`https://guptatejas.com/blog/${slug}`}
