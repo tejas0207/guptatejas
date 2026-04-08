@@ -1,10 +1,12 @@
 import type { BlogPostMeta } from "./types";
 import cloudfrontVpcOrigins from "./cloudfront-vpc-origins-private-alb";
+import s3FilesFilesystem from "./s3-files-filesystem";
 
 // Add new blog posts here — they will automatically appear on the blog listing page
 // and generate static pages at build time
 const posts: BlogPostMeta[] = [
   cloudfrontVpcOrigins,
+  s3FilesFilesystem,
 ];
 
 // Sort by date, newest first
