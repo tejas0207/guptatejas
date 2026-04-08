@@ -27,7 +27,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "article",
-      title: post.seo.metaTitle,
+      title: post.title,
       description: post.seo.metaDescription,
       url: `https://guptatejas.com/blog/${post.slug}`,
       publishedTime: post.date,
@@ -45,7 +45,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: post.seo.metaTitle,
+      title: post.title,
       description: post.seo.metaDescription,
       images: [post.thumbnail],
     },
